@@ -7,8 +7,6 @@
 
 #include "skill.h"
 
-class Engine; //Forward Declartion
-
 class Minion : public QObject
 {
     Q_OBJECT
@@ -20,7 +18,6 @@ class Minion : public QObject
     Q_PROPERTY(int curHP READ curHP NOTIFY curHPChanged)
     Q_PROPERTY(int curMaxHP READ curMaxHP NOTIFY curMaxHPChanged)
     Q_PROPERTY(QQmlListProperty<Skill> skills READ skills NOTIFY skillsChanged)
-    Q_PROPERTY(Engine *engine READ engine)
 
 public:
     Minion(QObject *parent = 0);
@@ -51,10 +48,6 @@ public:
 
     QJSValue description();
     void setDescription(const QJSValue& description);
-
-    Engine* m_engine;
-    Engine* engine();
-    void setEngine(Engine* eng);
 
     QList<Skill*> m_skills;
     QQmlListProperty<Skill> skills();

@@ -1,8 +1,6 @@
 #include "minion.h"
-#include "engine.h"
 
 Minion::Minion(QObject *parent) : QObject(parent){
-    m_engine = NULL;
 }
 
 int Minion::origATK() const{
@@ -59,14 +57,6 @@ QJSValue Minion::description(){
 void Minion::setDescription(const QJSValue &description){
     m_description = description;
     emit descriptionChanged(m_description);
-}
-
-Engine* Minion::engine(){
-    return m_engine;
-}
-
-void Minion::setEngine(Engine *eng){
-    m_engine = eng;
 }
 
 QQmlListProperty<Skill> Minion::skills(){

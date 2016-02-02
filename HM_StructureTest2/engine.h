@@ -11,8 +11,9 @@ class Engine : public QObject
     Q_PROPERTY(QQmlListProperty<Minion> minions READ minions NOTIFY minionsChanged)
 
 public:
-    Engine(QObject *parent = 0);
+    Engine(QQmlEngine* eng, QObject *parent = 0);
     ~Engine();
+    QQmlEngine* m_engine;
 
     QList<Minion*> m_minions;
     QQmlListProperty<Minion> minions();

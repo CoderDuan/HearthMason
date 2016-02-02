@@ -1,6 +1,7 @@
 #include "engine.h"
 
-Engine::Engine(QObject *parent) : QObject(parent){
+Engine::Engine(QQmlEngine *eng, QObject *parent) : QObject(parent){
+    m_engine = eng;
 }
 
 Engine::~Engine(){
@@ -27,10 +28,9 @@ QQmlListProperty<Minion> Engine::minions(){
 }
 
 void Engine::summon(QString minionName){
-    QQmlComponent component(qmlEngine(this), QUrl::fromLocalFile("minions/" + minionName + ".qml"));
+    QQmlComponent component(m_engine, QUrl::fromLocalFile("minions/" + minionName + ".qml"));
     if(component.isReady()){
         Minion *minion = qobject_cast<Minion*>(component.create());
-        minion->setEngine(this);
         m_minions.push_back(minion);
         emit minionsChanged();
     }
@@ -46,10 +46,9 @@ void Engine::damage(Minion *source, Minion *victim, int number){
     if(number <= 0)
         return;
 
-    QQmlEngine* engine = qmlEngine(this);
-    QJSValue damageData = engine->newObject();
-    damageData.setProperty("source", engine->newQObject(source));
-    damageData.setProperty("victim", engine->newQObject(victim));
+    QJSValue damageData = m_engine->newObject();
+    damageData.setProperty("source", m_engine->newQObject(source));
+    damageData.setProperty("victim", m_engine->newQObject(victim));
     damageData.setProperty("number", QJSValue(number));
 
     //DamageDealing
@@ -79,9 +78,8 @@ void Engine::recover(Minion *source, int number){
     if(number <= 0)
         return;
 
-    QQmlEngine* engine = qmlEngine(this);
-    QJSValue recoverData = engine->newObject();
-    recoverData.setProperty("minion", engine->newQObject(source));
+    QJSValue recoverData = m_engine->newObject();
+    recoverData.setProperty("minion", m_engine->newQObject(source));
     recoverData.setProperty("number", QJSValue(number));
 
     //Recovering

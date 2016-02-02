@@ -9,9 +9,12 @@ int main(int argc, char *argv[])
     QQuickView view;
     QObject::connect(view.engine(), SIGNAL(quit()), &app, SLOT(quit()));
 
-    qmlRegisterType<Engine>("HearthMason", 1, 0, "Engine");
+    Engine engine(view.rootContext()->engine());
+    view.rootContext()->setContextProperty("engine", &engine);
+
+    qmlRegisterType<Engine>();
     qmlRegisterType<Minion>("HearthMason", 1, 0, "Minion");
-    qmlRegisterType<Skill>("HearthMason", 1, 0, "Skill");
+    qmlRegisterType<Skill>();
     qmlRegisterType<TriggerSkill>("HearthMason", 1, 0, "TriggerSkill");
 
     view.setResizeMode(QQuickView::SizeRootObjectToView);

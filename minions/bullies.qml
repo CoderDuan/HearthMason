@@ -14,7 +14,8 @@ Minion{
             onTriggered: function(event, data){
                 if(event === "DamageDealing"){
                     var victim = data.victim
-                    if(victim.curHP < self.curHP){
+                    var source = data.source
+                    if(source === self && victim.curHP < self.curHP){
                         var num = data.number
                         data.number = 2 * num
                     }
