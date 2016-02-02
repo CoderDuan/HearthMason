@@ -2,3 +2,7 @@ build-HearthMason-Desktop_Qt_5_5_1_MSVC2012_32bit-Debug/
 build-qtTCPIPMessageSender-Desktop_Qt_5_3_MSVC2010_OpenGL_32bit-Debug/
 qtTCPIPMessageSender/qtTCPIPMessageSender.pro.user
 HM_StructureTest2/HM_StructureTest2.pro.user
+build-HM_StructureTest2-Desktop_Qt_5_5_1_MSVC2012_32bit-Debug/
+build*/
+*.pro.user
+
