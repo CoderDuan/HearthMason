@@ -12,7 +12,7 @@ Minion{
             onTriggered: function(event, data){
                 if(event === "Recovered"){
                     //Get valid minion list:
-                    var minionList = self.engine.minions
+                    var minionList = engine.minions
                     var validMinionList = []
                     var length = minionList.length
                     for(var i = 0; i < length; i++)

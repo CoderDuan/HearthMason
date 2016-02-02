@@ -7,10 +7,6 @@ Rectangle {
     height: 400
     color: "gray"
 
-    Engine{
-        id: engine
-    }
-
     Rectangle{
         id: bottomRect
         anchors.left: parent.left
@@ -136,11 +132,11 @@ Rectangle {
                         if(damageSource == undefined){
                             damageSource = modelData
                         }else{
-                            modelData.engine.damage(damageSource, modelData, 1)
+                            engine.damage(damageSource, modelData, 1)
                             damageSource = undefined
                         }
                     }else if(root.currentMode == 2){
-                        modelData.engine.recover(modelData, 1)
+                        engine.recover(modelData, 1)
                     }
                 }
             }
