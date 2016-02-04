@@ -12,7 +12,9 @@ TEMPLATE = app
 SOURCES += main.cpp \
     minion.cpp \
     engine.cpp \
-    skill.cpp
+    skill.cpp \
+    character.cpp \
+    hero.cpp
 
 RESOURCES += \
     Resources.qrc
@@ -20,4 +22,6 @@ RESOURCES += \
 HEADERS += \
     minion.h \
     engine.h \
-    skill.h
+    skill.h \
+    character.h \
+    hero.h
