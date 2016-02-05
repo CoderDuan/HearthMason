@@ -14,14 +14,18 @@ SOURCES += main.cpp \
     character.cpp \
     hero.cpp \
     minion.cpp \
-    minioncard.cpp
+    minioncard.cpp \
+    player.cpp \
+    engine.cpp
 
 HEADERS  += \
     card.h \
     character.h \
     hero.h \
     minion.h \
-    minioncard.h
+    minioncard.h \
+    player.h \
+    engine.h
 
 RESOURCES += \
     Resources.qrc

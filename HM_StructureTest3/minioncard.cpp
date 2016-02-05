@@ -2,17 +2,20 @@
 
 MinionCard::MinionCard()
 {
-    m_minion = NULL;
+    setMinion(NULL);
 }
 
-Minion* MinionCard::minion(){
+Minion* MinionCard::minion()
+{
     return m_minion;
 }
 
-void MinionCard::setMinion(Minion *minion){
+void MinionCard::setMinion(Minion *minion)
+{
     if(m_minion != minion){
         m_minion = minion;
-        m_minion->setCard(this);
+        if(minion)
+            m_minion->setCard(this);
         emit minionChanged();
     }
 }

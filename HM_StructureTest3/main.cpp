@@ -2,9 +2,7 @@
 #include <QtQuick/QQuickView>
 #include <QtQml>
 
-#include "minion.h"
-#include "minioncard.h"
-#include "hero.h"
+#include "engine.h"
 
 int main(int argc, char *argv[])
 {
@@ -12,6 +10,12 @@ int main(int argc, char *argv[])
 
     QQuickView view;
     QObject::connect(view.engine(), SIGNAL(quit()), &app, SLOT(quit()));
+
+    Engine engine;
+    view.rootContext()->setContextProperty("engine", &engine);
+
+    qmlRegisterType<Engine>();
+    qmlRegisterType<Player>();
 
     qmlRegisterType<Character>();
     qmlRegisterType<Hero>();

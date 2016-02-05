@@ -12,7 +12,8 @@ int Hero::curArmor() const
     return m_curArmor;
 }
 
-void Hero::setCurArmor(const int &curArmor){
+void Hero::setCurArmor(const int &curArmor)
+{
     if(m_curArmor != curArmor){
         m_curArmor = curArmor;
         emit curArmorChanged();

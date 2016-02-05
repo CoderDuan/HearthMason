@@ -1,7 +1,9 @@
 #include "card.h"
+#include "player.h"
 
 Card::Card(QObject *parent) : QObject(parent)
 {
+    setPlayer(NULL);
 }
 
 //metadata: name and description:
@@ -52,4 +54,18 @@ void Card::setCurCost(const int &curCost)
 {
     m_curCost = curCost;
     emit curCostChanged();
+}
+
+//player: the player who controls this card (or the corresponding minion or secret)
+Player* Card::player()
+{
+    return m_player;
+}
+
+void Card::setPlayer(Player *player)
+{
+    if(m_player != player){
+        m_player = player;
+        emit playerChanged();
+    }
 }

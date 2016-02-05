@@ -10,8 +10,7 @@ Rectangle {
         origCost: 3
         name: "Deathwing"
         description: "Face Deathwing!"
-
-        Minion{
+        minion: Minion{
             origATK: 3
             origHP: 5
         }
@@ -25,6 +24,10 @@ Rectangle {
             console.log(card.name)
             console.log(card.minion.card)
             console.log(card.minion.curATK)
+            console.log(engine)
+            console.log(engine.self)
+            console.log(engine.opponent)
+            console.log(card.player)
         }
     }
 }
