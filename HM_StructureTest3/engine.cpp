@@ -1,7 +1,9 @@
 #include "engine.h"
 
-Engine::Engine(QObject *parent) : QObject(parent)
+Engine::Engine(QQmlEngine *eng, QObject *parent) : QObject(parent)
 {
+    m_engine = eng;
+
     //Random number seed:
     qsrand(time(NULL));
 
@@ -31,6 +33,18 @@ Player* Engine::opponent()
 int Engine::index()
 {
     return m_index++;
+}
+
+//Load card from local file:
+Card* Engine::loadCard(QString fileName)
+{
+    QQmlComponent component(m_engine, QUrl::fromLocalFile("cards/" + fileName + ".qml"));
+    if(component.isReady()){
+        Card* card = qobject_cast<Card*>(component.create());
+        m_engine->setObjectOwnership(card, QQmlEngine::JavaScriptOwnership);
+        return card;
+    }
+    return NULL;
 }
 
 //Return a random number between base and (base + max - 1).

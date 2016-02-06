@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     QQuickView view;
     QObject::connect(view.engine(), SIGNAL(quit()), &app, SLOT(quit()));
 
-    Engine engine;
+    Engine engine(view.rootContext()->engine());
     view.rootContext()->setContextProperty("engine", &engine);
 
     qmlRegisterType<Engine>();

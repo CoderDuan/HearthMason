@@ -8,6 +8,7 @@ class MinionCard : public Card
 {
     Q_OBJECT
     Q_PROPERTY(Minion* minion READ minion WRITE setMinion NOTIFY minionChanged)
+    Q_CLASSINFO("DefaultProperty", "minion")
 
 public:
     MinionCard();
