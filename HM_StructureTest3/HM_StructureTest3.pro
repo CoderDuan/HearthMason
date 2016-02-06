@@ -16,7 +16,9 @@ SOURCES += main.cpp \
     minion.cpp \
     minioncard.cpp \
     player.cpp \
-    engine.cpp
+    engine.cpp \
+    skill.cpp \
+    triggerskill.cpp
 
 HEADERS  += \
     card.h \
@@ -25,7 +27,9 @@ HEADERS  += \
     minion.h \
     minioncard.h \
     player.h \
-    engine.h
+    engine.h \
+    skill.h \
+    triggerskill.h
 
 RESOURCES += \
     Resources.qrc

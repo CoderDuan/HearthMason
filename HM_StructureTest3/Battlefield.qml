@@ -14,6 +14,16 @@ Rectangle {
         minion: Minion{
             origATK: 3
             origHP: 5
+
+            TriggerSkill{
+                triggerFunc: function(){}
+            }
+            TriggerSkill{
+                triggerFunc: function(){console.log("called trigger function")}
+            }
+            TriggerSkill{
+
+            }
         }
     }
 
@@ -26,6 +36,9 @@ Rectangle {
             console.log(card.minion.card)
             console.log(card.minion.curATK)
             console.log(card.cardClass)
+            console.log(card.minion.skills.length)
+            console.log(card.minion.skills[1])
+            console.log(card.minion.skills[1].triggerFunc.call())
             console.log(engine)
             console.log(engine.self)
             console.log(engine.opponent)

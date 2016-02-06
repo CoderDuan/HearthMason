@@ -75,6 +75,11 @@ void Character::setCurMaxHP(const int &curMaxHP)
     }
 }
 
+QQmlListProperty<Skill> Character::skills()
+{
+    return QQmlListProperty<Skill>(this, m_skills);
+}
+
 int Character::order() const
 {
     return m_order;

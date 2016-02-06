@@ -11,7 +11,7 @@ class Card : public QObject
     Q_ENUMS(Class)
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(QString description READ description WRITE setDescription NOTIFY descriptionChanged)
-    Q_PROPERTY(Card::Class cardClass READ cardClass WRITE setCardClass NOTIFY cardClassChanged)
+    Q_PROPERTY(Class cardClass READ cardClass WRITE setCardClass NOTIFY cardClassChanged)
     Q_PROPERTY(int origCost READ origCost WRITE setOrigCost NOTIFY origCostChanged)
     Q_PROPERTY(int curCost READ curCost NOTIFY curCostChanged) //Read only.
     Q_PROPERTY(Player* player READ player NOTIFY playerChanged) //Read only.

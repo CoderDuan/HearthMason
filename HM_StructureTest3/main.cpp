@@ -3,6 +3,8 @@
 #include <QtQml>
 
 #include "engine.h"
+#include "skill.h"
+#include "triggerskill.h"
 
 int main(int argc, char *argv[])
 {
@@ -23,6 +25,9 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<Card>();
     qmlRegisterType<MinionCard>("HearthMason", 1, 0, "MinionCard");
+
+    qmlRegisterType<Skill>();
+    qmlRegisterType<TriggerSkill>("HearthMason", 1, 0, "TriggerSkill");
 
     view.setResizeMode(QQuickView::SizeViewToRootObject);
     view.setSource(QUrl("qrc:///Battlefield.qml"));
