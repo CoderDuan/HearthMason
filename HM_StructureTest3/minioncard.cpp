@@ -14,7 +14,7 @@ void MinionCard::setMinion(Minion *minion)
 {
     if(m_minion != minion){
         m_minion = minion;
-        if(minion)
+        if(m_minion)
             m_minion->setCard(this);
         emit minionChanged();
     }

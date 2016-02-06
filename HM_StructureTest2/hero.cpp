@@ -5,7 +5,7 @@ Hero::Hero()
 
 }
 
-int Hero::curAmror() const
+int Hero::curArmor() const
 {
     return m_armor;
 }
@@ -27,14 +27,14 @@ int Hero::takeDamage(int number)
         return 0;
     if(number <= m_armor){
         m_armor -= number;
-        emit curAmrorChanged(m_armor);
+        emit curArmorChanged(m_armor);
         return 0;
     }
     else{
         int hpDamage = number - m_armor;
         m_armor = 0;
         m_curHP -= hpDamage;
-        emit curAmrorChanged(m_armor);
+        emit curArmorChanged(m_armor);
         emit curHPChanged(m_curHP);
         return hpDamage;
     }

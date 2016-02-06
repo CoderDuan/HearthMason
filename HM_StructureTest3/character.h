@@ -27,12 +27,19 @@ public:
     int curMaxHP() const;
     void setCurMaxHP(const int &curMaxHP);
 
+    //the summoning order:
+    int order() const;
+    void setOrder(const int &order);
+
 protected:
     int m_origATK;
     int m_origHP;
     int m_curATK;
     int m_curHP;
     int m_curMaxHP;
+
+    //the summoning order:
+    int m_order;
 
 signals:
     void origATKChanged();

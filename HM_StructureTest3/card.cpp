@@ -4,6 +4,7 @@
 Card::Card(QObject *parent) : QObject(parent)
 {
     setPlayer(NULL);
+    setCardClass(Class_Neutral);
 }
 
 //metadata: name and description:
@@ -27,6 +28,19 @@ void Card::setDescription(const QString &description)
 {
     m_description = description;
     emit descriptionChanged();
+}
+
+Card::Class Card::cardClass() const
+{
+    return m_class;
+}
+
+void Card::setCardClass(const Class &cardClass)
+{
+    if(m_class != cardClass){
+        m_class = cardClass;
+        emit cardClassChanged();
+    }
 }
 
 //origCost and curCost:

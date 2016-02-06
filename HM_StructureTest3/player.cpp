@@ -7,12 +7,27 @@ Player::Player(QObject *parent) : QObject(parent)
     setHero(NULL);
 }
 
-Player::Player(bool isSelf, QObject *parent) : QObject(parent)
+Player::Player(bool isSelf, bool isStartingPlayer, Hero *hero, QObject *parent) : QObject(parent)
 {
     setMaxCrystalNum(0);
     setCurCrystalNum(0);
-    setHero(NULL);
+    setHero(hero);
     m_isSelf = isSelf;
+    m_isStartingPlayer = isStartingPlayer;
+
+    //Set the summoning order of the player's hero:
+    if(m_hero){
+        if(m_isStartingPlayer)
+            hero->setOrder(0);
+        else
+            hero->setOrder(1);
+    }
+}
+
+Player::~Player()
+{
+    if(m_hero)
+        m_hero->deleteLater();
 }
 
 //curCrystalNum and maxCrystalNum:
@@ -148,4 +163,14 @@ void Player::acquireHandcard(Card *card)
     if(card)
         card->setPlayer(this);
     m_hand.push_back(card);
+}
+
+bool Player::isSelf()
+{
+    return m_isSelf;
+}
+
+bool Player::isStartingPlayer()
+{
+    return m_isStartingPlayer;
 }

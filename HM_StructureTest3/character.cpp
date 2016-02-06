@@ -74,3 +74,13 @@ void Character::setCurMaxHP(const int &curMaxHP)
         emit curMaxHPChanged();
     }
 }
+
+int Character::order() const
+{
+    return m_order;
+}
+
+void Character::setOrder(const int &order)
+{
+    m_order = order;
+}

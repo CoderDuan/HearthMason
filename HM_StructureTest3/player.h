@@ -21,7 +21,8 @@ class Player : public QObject
 
 public:
     Player(QObject *parent = 0);
-    Player(bool isSelf, QObject *parent = 0);
+    Player(bool isSelf, bool isStartingPlayer, Hero *hero, QObject *parent = 0);
+    ~Player();
 
     int curCrystalNum();
     void setCurCrystalNum(int curCrystalNum);
@@ -40,6 +41,9 @@ public:
 
     QQmlListProperty<Card> hand();
     void acquireHandcard(Card* card);
+
+    Q_INVOKABLE bool isSelf();
+    Q_INVOKABLE bool isStartingPlayer();
 
 protected:
     //This player's deck and hand, as well as his minions and secrets in the battlefield.
@@ -65,6 +69,8 @@ protected:
 
     //Is this player self or opponent?
     bool m_isSelf;
+    //Is this player starting player?
+    bool m_isStartingPlayer;
 
 signals:
     void curCrystalNumChanged();

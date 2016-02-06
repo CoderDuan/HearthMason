@@ -14,7 +14,7 @@ public:
     Hero();
 
     //stats
-    int curAmror() const;
+    int curArmor() const;
 
     //weapon
     Weapon* weapon();
@@ -22,14 +22,14 @@ public:
 
     //stats change function
     int takeDamage(int number);
-    void increaseAmror(int number);
+    void increaseArmor(int number);
 
 protected:
     int m_armor;
     Weapon* m_weapon;
 
 signals:
-    void curAmrorChanged(const int &curAmror);
+    void curArmorChanged(const int &curArmor);
 
 };
 

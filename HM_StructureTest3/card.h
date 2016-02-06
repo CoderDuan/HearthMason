@@ -8,8 +8,10 @@ class Player;
 class Card : public QObject
 {
     Q_OBJECT
+    Q_ENUMS(Class)
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(QString description READ description WRITE setDescription NOTIFY descriptionChanged)
+    Q_PROPERTY(Card::Class cardClass READ cardClass WRITE setCardClass NOTIFY cardClassChanged)
     Q_PROPERTY(int origCost READ origCost WRITE setOrigCost NOTIFY origCostChanged)
     Q_PROPERTY(int curCost READ curCost NOTIFY curCostChanged) //Read only.
     Q_PROPERTY(Player* player READ player NOTIFY playerChanged) //Read only.
@@ -17,9 +19,24 @@ class Card : public QObject
 public:
     Card(QObject *parent = 0);
 
-    //metadata: name and description:
+    enum Class{
+        Class_Neutral = 0,
+        Class_Druid,
+        Class_Hunter,
+        Class_Mage,
+        Class_Paladin,
+        Class_Priest,
+        Class_Rogue,
+        Class_Shaman,
+        Class_Warlock,
+        Class_Warrior
+    };
+
+    //metadata: name, class and description:
     QString name() const;
     void setName(const QString &name);
+    Class cardClass() const;
+    void setCardClass(const Class &cardClass);
     QString description() const;
     void setDescription(const QString &description);
 
@@ -36,6 +53,7 @@ public:
 protected:
     QString m_name;
     QString m_description;
+    Class m_class;
     int m_origCost;
     int m_curCost;
     Player* m_player;
@@ -43,6 +61,7 @@ protected:
 signals:
     void nameChanged();
     void descriptionChanged();
+    void cardClassChanged();
     void origCostChanged();
     void curCostChanged();
     void playerChanged();

@@ -10,6 +10,7 @@ Rectangle {
         origCost: 3
         name: "Deathwing"
         description: "Face Deathwing!"
+        cardClass: MinionCard.Class_Hunter
         minion: Minion{
             origATK: 3
             origHP: 5
@@ -24,10 +25,13 @@ Rectangle {
             console.log(card.name)
             console.log(card.minion.card)
             console.log(card.minion.curATK)
+            console.log(card.cardClass)
             console.log(engine)
             console.log(engine.self)
             console.log(engine.opponent)
-            console.log(card.player)
+            console.log("is myself starting player?", engine.self.isStartingPlayer())
+            console.log(engine.self.hero)
+            console.log(engine.self.hero.curMaxHP)
         }
     }
 }

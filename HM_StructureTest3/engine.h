@@ -2,6 +2,7 @@
 #define ENGINE_H
 
 #include "player.h"
+#include "time.h"
 
 class Engine : public QObject
 {
@@ -19,9 +20,17 @@ public:
     Player* self();
     Player* opponent();
 
+    //the index of the global summoning queue:
+    int index();
+
+    /*below are some tool functions:*/
+    Q_INVOKABLE int randomNum(int max, int base = 0);
+
 protected:
     Player* m_self;
     Player* m_opponent;
+
+    int m_index;
 };
 
 #endif // ENGINE_H
